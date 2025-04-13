@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #a {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="word1" value="word1" placeholder="Insert a word">
+    <input type="text" id="word2" value="word2" placeholder="Insert a word">
+    <input type="text" id="word3" value="word3" placeholder="Insert a word">
+    <input type="text" id="word4" value="word4" placeholder="Insert a word">
+    <button onclick="download('word', 'filename.txt', 'text/plain')">Создать файл</button>
+    <a href="" id="a">Сохранить файл</a>
+
+    <script>
+        function download(id, name, type) {
+            text = document.getElementById('word1').value
+            var a = document.getElementById("a");
+            var file = new Blob([text], { type: type });
+            a.href = URL.createObjectURL(file);
+            a.download = name;
+            a.click();//можно эмулировать нажатие ссылки
+        }
+    </script>
+</body>
+
+</html>
